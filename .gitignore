@@ -1,0 +1,9 @@
+.dart_tool/
+.packages
+pubspec.lock
+build/
+coverage/
+.work/
+dataset/
+datasets/
+*.tmp

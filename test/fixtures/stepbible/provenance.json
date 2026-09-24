@@ -1,0 +1,1724 @@
+{
+  "repository": "https://github.com/STEPBible/STEPBible-Data",
+  "revision": "b99716b0cddb648ddb95cc786a197180f2f97d48",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": "STEPBible.org, based on work at Tyndale House Cambridge",
+  "modifications": "Verbatim header and selected data-row excerpts, concatenated into compact fixtures. No changes within source records.",
+  "fixtures": {
+    "tagnt.txt": {
+      "sha256": "9a81c9380904756f1e577d0afa2e6fe500651f0cbbe5cfaa3f0ae7986f171a03",
+      "records": 156,
+      "excerpts": [
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLines": [
+            1,
+            94
+          ],
+          "fixtureLines": [
+            1,
+            94
+          ]
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3941,
+          "fixtureLine": 95,
+          "recordId": "Act.4.25#01=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3942,
+          "fixtureLine": 96,
+          "recordId": "Act.4.25#02=NO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3943,
+          "fixtureLine": 97,
+          "recordId": "Act.4.25#03=NO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3944,
+          "fixtureLine": 98,
+          "recordId": "Act.4.25#04=NO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3945,
+          "fixtureLine": 99,
+          "recordId": "Act.4.25#05=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3946,
+          "fixtureLine": 100,
+          "recordId": "Act.4.25#06=NO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3947,
+          "fixtureLine": 101,
+          "recordId": "Act.4.25#07=NO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3948,
+          "fixtureLine": 102,
+          "recordId": "Act.4.25#08=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3949,
+          "fixtureLine": 103,
+          "recordId": "Act.4.25#09=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3950,
+          "fixtureLine": 104,
+          "recordId": "Act.4.25#10=k"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3951,
+          "fixtureLine": 105,
+          "recordId": "Act.4.25#11=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3952,
+          "fixtureLine": 106,
+          "recordId": "Act.4.25#12=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3953,
+          "fixtureLine": 107,
+          "recordId": "Act.4.25#13=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3954,
+          "fixtureLine": 108,
+          "recordId": "Act.4.25#14=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3955,
+          "fixtureLine": 109,
+          "recordId": "Act.4.25#15=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3956,
+          "fixtureLine": 110,
+          "recordId": "Act.4.25#16=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3957,
+          "fixtureLine": 111,
+          "recordId": "Act.4.25#17=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3958,
+          "fixtureLine": 112,
+          "recordId": "Act.4.25#18=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3959,
+          "fixtureLine": 113,
+          "recordId": "Act.4.25#19=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 3960,
+          "fixtureLine": 114,
+          "recordId": "Act.4.25#20=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26794,
+          "fixtureLine": 115,
+          "recordId": "Act.24.12#01=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26795,
+          "fixtureLine": 116,
+          "recordId": "Act.24.12#02=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26796,
+          "fixtureLine": 117,
+          "recordId": "Act.24.12#03=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26797,
+          "fixtureLine": 118,
+          "recordId": "Act.24.12#04=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26798,
+          "fixtureLine": 119,
+          "recordId": "Act.24.12#05=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26799,
+          "fixtureLine": 120,
+          "recordId": "Act.24.12#06=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26800,
+          "fixtureLine": 121,
+          "recordId": "Act.24.12#07=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26801,
+          "fixtureLine": 122,
+          "recordId": "Act.24.12#08=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26802,
+          "fixtureLine": 123,
+          "recordId": "Act.24.12#09=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26803,
+          "fixtureLine": 124,
+          "recordId": "Act.24.12#10=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26804,
+          "fixtureLine": 125,
+          "recordId": "Act.24.12#11=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26805,
+          "fixtureLine": 126,
+          "recordId": "Act.24.12#12=N(k)O"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26806,
+          "fixtureLine": 127,
+          "recordId": "Act.24.12#13=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26807,
+          "fixtureLine": 128,
+          "recordId": "Act.24.12#14=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26808,
+          "fixtureLine": 129,
+          "recordId": "Act.24.12#15=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26809,
+          "fixtureLine": 130,
+          "recordId": "Act.24.12#16=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26810,
+          "fixtureLine": 131,
+          "recordId": "Act.24.12#17=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26811,
+          "fixtureLine": 132,
+          "recordId": "Act.24.12#18=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26812,
+          "fixtureLine": 133,
+          "recordId": "Act.24.12#19=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26813,
+          "fixtureLine": 134,
+          "recordId": "Act.24.12#20=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26814,
+          "fixtureLine": 135,
+          "recordId": "Act.24.12#21=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 26815,
+          "fixtureLine": 136,
+          "recordId": "Act.24.12#22=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109957,
+          "fixtureLine": 137,
+          "recordId": "Rev.2.3#01=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109958,
+          "fixtureLine": 138,
+          "recordId": "Rev.2.3#02=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109959,
+          "fixtureLine": 139,
+          "recordId": "Rev.2.3#03=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109960,
+          "fixtureLine": 140,
+          "recordId": "Rev.2.3#04=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109961,
+          "fixtureLine": 141,
+          "recordId": "Rev.2.3#05=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109962,
+          "fixtureLine": 142,
+          "recordId": "Rev.2.3#06=k"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109963,
+          "fixtureLine": 143,
+          "recordId": "Rev.2.3#07=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109964,
+          "fixtureLine": 144,
+          "recordId": "Rev.2.3#08=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109965,
+          "fixtureLine": 145,
+          "recordId": "Rev.2.3#09=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109966,
+          "fixtureLine": 146,
+          "recordId": "Rev.2.3#10=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109967,
+          "fixtureLine": 147,
+          "recordId": "Rev.2.3#11=K"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109968,
+          "fixtureLine": 148,
+          "recordId": "Rev.2.3#12=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109969,
+          "fixtureLine": 149,
+          "recordId": "Rev.2.3#13=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 109970,
+          "fixtureLine": 150,
+          "recordId": "Rev.2.3#14=NK(o)"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 95,
+          "fixtureLine": 151,
+          "recordId": "Mat.1.1#01=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 96,
+          "fixtureLine": 152,
+          "recordId": "Mat.1.1#02=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 97,
+          "fixtureLine": 153,
+          "recordId": "Mat.1.1#03=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 98,
+          "fixtureLine": 154,
+          "recordId": "Mat.1.1#04=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 99,
+          "fixtureLine": 155,
+          "recordId": "Mat.1.1#05=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 100,
+          "fixtureLine": 156,
+          "recordId": "Mat.1.1#06=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 101,
+          "fixtureLine": 157,
+          "recordId": "Mat.1.1#07=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 102,
+          "fixtureLine": 158,
+          "recordId": "Mat.1.1#08=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32061,
+          "fixtureLine": 159,
+          "recordId": "Mrk.1.13#01=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32062,
+          "fixtureLine": 160,
+          "recordId": "Mrk.1.13#02=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32063,
+          "fixtureLine": 161,
+          "recordId": "Mrk.1.13#03=k"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32064,
+          "fixtureLine": 162,
+          "recordId": "Mrk.1.13#04=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32065,
+          "fixtureLine": 163,
+          "recordId": "Mrk.1.13#05=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32066,
+          "fixtureLine": 164,
+          "recordId": "Mrk.1.13#06=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32067,
+          "fixtureLine": 165,
+          "recordId": "Mrk.1.13#07=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32068,
+          "fixtureLine": 166,
+          "recordId": "Mrk.1.13#08=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32069,
+          "fixtureLine": 167,
+          "recordId": "Mrk.1.13#09=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32070,
+          "fixtureLine": 168,
+          "recordId": "Mrk.1.13#10=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32071,
+          "fixtureLine": 169,
+          "recordId": "Mrk.1.13#11=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32072,
+          "fixtureLine": 170,
+          "recordId": "Mrk.1.13#12=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32073,
+          "fixtureLine": 171,
+          "recordId": "Mrk.1.13#13=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32074,
+          "fixtureLine": 172,
+          "recordId": "Mrk.1.13#14=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32075,
+          "fixtureLine": 173,
+          "recordId": "Mrk.1.13#15=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32076,
+          "fixtureLine": 174,
+          "recordId": "Mrk.1.13#16=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32077,
+          "fixtureLine": 175,
+          "recordId": "Mrk.1.13#17=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32078,
+          "fixtureLine": 176,
+          "recordId": "Mrk.1.13#18=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32079,
+          "fixtureLine": 177,
+          "recordId": "Mrk.1.13#19=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32080,
+          "fixtureLine": 178,
+          "recordId": "Mrk.1.13#20=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32081,
+          "fixtureLine": 179,
+          "recordId": "Mrk.1.13#21=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 32082,
+          "fixtureLine": 180,
+          "recordId": "Mrk.1.13#22=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39819,
+          "fixtureLine": 181,
+          "recordId": "Mrk.7.30#01=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39820,
+          "fixtureLine": 182,
+          "recordId": "Mrk.7.30#02=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39821,
+          "fixtureLine": 183,
+          "recordId": "Mrk.7.30#03=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39822,
+          "fixtureLine": 184,
+          "recordId": "Mrk.7.30#04=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39823,
+          "fixtureLine": 185,
+          "recordId": "Mrk.7.30#05=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39824,
+          "fixtureLine": 186,
+          "recordId": "Mrk.7.30#06=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39825,
+          "fixtureLine": 187,
+          "recordId": "Mrk.7.30#07=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39826,
+          "fixtureLine": 188,
+          "recordId": "Mrk.7.30#08=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39827,
+          "fixtureLine": 189,
+          "recordId": "Mrk.7.30#09=N(K)O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39828,
+          "fixtureLine": 190,
+          "recordId": "Mrk.7.30#10=N(k)O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39829,
+          "fixtureLine": 191,
+          "recordId": "Mrk.7.30#11=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39830,
+          "fixtureLine": 192,
+          "recordId": "Mrk.7.30#12=N(k)O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39831,
+          "fixtureLine": 193,
+          "recordId": "Mrk.7.30#13=N(k)O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39832,
+          "fixtureLine": 194,
+          "recordId": "Mrk.7.30#14=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39833,
+          "fixtureLine": 195,
+          "recordId": "Mrk.7.30#15=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39834,
+          "fixtureLine": 196,
+          "recordId": "Mrk.7.30#16=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 39835,
+          "fixtureLine": 197,
+          "recordId": "Mrk.7.30#17=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51207,
+          "fixtureLine": 198,
+          "recordId": "Mrk.16.8#01=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51208,
+          "fixtureLine": 199,
+          "recordId": "Mrk.16.8#02=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51209,
+          "fixtureLine": 200,
+          "recordId": "Mrk.16.8#03=K"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51210,
+          "fixtureLine": 201,
+          "recordId": "Mrk.16.8#04=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51211,
+          "fixtureLine": 202,
+          "recordId": "Mrk.16.8#05=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51212,
+          "fixtureLine": 203,
+          "recordId": "Mrk.16.8#06=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51213,
+          "fixtureLine": 204,
+          "recordId": "Mrk.16.8#07=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51214,
+          "fixtureLine": 205,
+          "recordId": "Mrk.16.8#08=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51215,
+          "fixtureLine": 206,
+          "recordId": "Mrk.16.8#09=N(k)O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51216,
+          "fixtureLine": 207,
+          "recordId": "Mrk.16.8#10=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51217,
+          "fixtureLine": 208,
+          "recordId": "Mrk.16.8#11=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51218,
+          "fixtureLine": 209,
+          "recordId": "Mrk.16.8#12=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51219,
+          "fixtureLine": 210,
+          "recordId": "Mrk.16.8#13=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51220,
+          "fixtureLine": 211,
+          "recordId": "Mrk.16.8#14=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51221,
+          "fixtureLine": 212,
+          "recordId": "Mrk.16.8#15=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51222,
+          "fixtureLine": 213,
+          "recordId": "Mrk.16.8#16=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51223,
+          "fixtureLine": 214,
+          "recordId": "Mrk.16.8#17=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51224,
+          "fixtureLine": 215,
+          "recordId": "Mrk.16.8#18=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51225,
+          "fixtureLine": 216,
+          "recordId": "Mrk.16.8#19=NKO"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51226,
+          "fixtureLine": 217,
+          "recordId": "Mrk.16.8#20=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51227,
+          "fixtureLine": 218,
+          "recordId": "Mrk.16.8#21=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51228,
+          "fixtureLine": 219,
+          "recordId": "Mrk.16.8#22=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51229,
+          "fixtureLine": 220,
+          "recordId": "Mrk.16.8#23=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51230,
+          "fixtureLine": 221,
+          "recordId": "Mrk.16.8#24=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51231,
+          "fixtureLine": 222,
+          "recordId": "Mrk.16.8#25=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51232,
+          "fixtureLine": 223,
+          "recordId": "Mrk.16.8#26=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51233,
+          "fixtureLine": 224,
+          "recordId": "Mrk.16.8#27=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51234,
+          "fixtureLine": 225,
+          "recordId": "Mrk.16.8#28=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51235,
+          "fixtureLine": 226,
+          "recordId": "Mrk.16.8#29=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51236,
+          "fixtureLine": 227,
+          "recordId": "Mrk.16.8#30=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51237,
+          "fixtureLine": 228,
+          "recordId": "Mrk.16.8#31=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51238,
+          "fixtureLine": 229,
+          "recordId": "Mrk.16.8#32=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51239,
+          "fixtureLine": 230,
+          "recordId": "Mrk.16.8#33=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51240,
+          "fixtureLine": 231,
+          "recordId": "Mrk.16.8#34=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51241,
+          "fixtureLine": 232,
+          "recordId": "Mrk.16.8#35=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51242,
+          "fixtureLine": 233,
+          "recordId": "Mrk.16.8#36=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51243,
+          "fixtureLine": 234,
+          "recordId": "Mrk.16.8#37=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51244,
+          "fixtureLine": 235,
+          "recordId": "Mrk.16.8#38=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51245,
+          "fixtureLine": 236,
+          "recordId": "Mrk.16.8#39=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51246,
+          "fixtureLine": 237,
+          "recordId": "Mrk.16.8#40=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51247,
+          "fixtureLine": 238,
+          "recordId": "Mrk.16.8#41=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51248,
+          "fixtureLine": 239,
+          "recordId": "Mrk.16.8#42=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51249,
+          "fixtureLine": 240,
+          "recordId": "Mrk.16.8#43=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51250,
+          "fixtureLine": 241,
+          "recordId": "Mrk.16.8#44=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51251,
+          "fixtureLine": 242,
+          "recordId": "Mrk.16.8#45=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51252,
+          "fixtureLine": 243,
+          "recordId": "Mrk.16.8#46=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51253,
+          "fixtureLine": 244,
+          "recordId": "Mrk.16.8#47=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51254,
+          "fixtureLine": 245,
+          "recordId": "Mrk.16.8#48=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51255,
+          "fixtureLine": 246,
+          "recordId": "Mrk.16.8#49=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51256,
+          "fixtureLine": 247,
+          "recordId": "Mrk.16.8#50=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51257,
+          "fixtureLine": 248,
+          "recordId": "Mrk.16.8#51=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51258,
+          "fixtureLine": 249,
+          "recordId": "Mrk.16.8#52=O"
+        },
+        {
+          "sourcePath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "sourceLine": 51259,
+          "fixtureLine": 250,
+          "recordId": "Mrk.16.8#53=O"
+        }
+      ]
+    },
+    "tahot.txt": {
+      "sha256": "c5d89465bfa1d24516b8188e7b7203c1585cef83a8970013f05e229c22ee31f7",
+      "records": 124,
+      "excerpts": [
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLines": [
+            1,
+            82
+          ],
+          "fixtureLines": [
+            1,
+            82
+          ]
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 83,
+          "fixtureLine": 83,
+          "recordId": "Gen.1.1#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 84,
+          "fixtureLine": 84,
+          "recordId": "Gen.1.1#02=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 85,
+          "fixtureLine": 85,
+          "recordId": "Gen.1.1#03=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 86,
+          "fixtureLine": 86,
+          "recordId": "Gen.1.1#04=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 87,
+          "fixtureLine": 87,
+          "recordId": "Gen.1.1#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 88,
+          "fixtureLine": 88,
+          "recordId": "Gen.1.1#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 89,
+          "fixtureLine": 89,
+          "recordId": "Gen.1.1#07=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2195,
+          "fixtureLine": 90,
+          "recordId": "Gen.4.8#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2196,
+          "fixtureLine": 91,
+          "recordId": "Gen.4.8#02=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2197,
+          "fixtureLine": 92,
+          "recordId": "Gen.4.8#03=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2198,
+          "fixtureLine": 93,
+          "recordId": "Gen.4.8#04=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2199,
+          "fixtureLine": 94,
+          "recordId": "Gen.4.8#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2200,
+          "fixtureLine": 95,
+          "recordId": "Gen.4.8#0501=X"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2201,
+          "fixtureLine": 96,
+          "recordId": "Gen.4.8#0502=X"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2202,
+          "fixtureLine": 97,
+          "recordId": "Gen.4.8#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2203,
+          "fixtureLine": 98,
+          "recordId": "Gen.4.8#07=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2204,
+          "fixtureLine": 99,
+          "recordId": "Gen.4.8#08=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2205,
+          "fixtureLine": 100,
+          "recordId": "Gen.4.8#09=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2206,
+          "fixtureLine": 101,
+          "recordId": "Gen.4.8#10=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2207,
+          "fixtureLine": 102,
+          "recordId": "Gen.4.8#11=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2208,
+          "fixtureLine": 103,
+          "recordId": "Gen.4.8#12=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2209,
+          "fixtureLine": 104,
+          "recordId": "Gen.4.8#13=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 2210,
+          "fixtureLine": 105,
+          "recordId": "Gen.4.8#14=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4803,
+          "fixtureLine": 106,
+          "recordId": "Gen.8.17#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4804,
+          "fixtureLine": 107,
+          "recordId": "Gen.8.17#02=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4805,
+          "fixtureLine": 108,
+          "recordId": "Gen.8.17#03=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4806,
+          "fixtureLine": 109,
+          "recordId": "Gen.8.17#04=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4807,
+          "fixtureLine": 110,
+          "recordId": "Gen.8.17#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4808,
+          "fixtureLine": 111,
+          "recordId": "Gen.8.17#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4809,
+          "fixtureLine": 112,
+          "recordId": "Gen.8.17#07=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4810,
+          "fixtureLine": 113,
+          "recordId": "Gen.8.17#08=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4811,
+          "fixtureLine": 114,
+          "recordId": "Gen.8.17#09=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4812,
+          "fixtureLine": 115,
+          "recordId": "Gen.8.17#10=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4813,
+          "fixtureLine": 116,
+          "recordId": "Gen.8.17#11=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4814,
+          "fixtureLine": 117,
+          "recordId": "Gen.8.17#12=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4815,
+          "fixtureLine": 118,
+          "recordId": "Gen.8.17#13=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4816,
+          "fixtureLine": 119,
+          "recordId": "Gen.8.17#14=Q(k)"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4817,
+          "fixtureLine": 120,
+          "recordId": "Gen.8.17#15=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4818,
+          "fixtureLine": 121,
+          "recordId": "Gen.8.17#16=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4819,
+          "fixtureLine": 122,
+          "recordId": "Gen.8.17#17=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4820,
+          "fixtureLine": 123,
+          "recordId": "Gen.8.17#18=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4821,
+          "fixtureLine": 124,
+          "recordId": "Gen.8.17#19=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4822,
+          "fixtureLine": 125,
+          "recordId": "Gen.8.17#20=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 4823,
+          "fixtureLine": 126,
+          "recordId": "Gen.8.17#21=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8139,
+          "fixtureLine": 127,
+          "recordId": "Gen.14.17#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8140,
+          "fixtureLine": 128,
+          "recordId": "Gen.14.17#02=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8141,
+          "fixtureLine": 129,
+          "recordId": "Gen.14.17#03=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8142,
+          "fixtureLine": 130,
+          "recordId": "Gen.14.17#04=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8143,
+          "fixtureLine": 131,
+          "recordId": "Gen.14.17#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8144,
+          "fixtureLine": 132,
+          "recordId": "Gen.14.17#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8145,
+          "fixtureLine": 133,
+          "recordId": "Gen.14.17#07=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8146,
+          "fixtureLine": 134,
+          "recordId": "Gen.14.17#08=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8147,
+          "fixtureLine": 135,
+          "recordId": "Gen.14.17#09=LBH(A)"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8148,
+          "fixtureLine": 136,
+          "recordId": "Gen.14.17#10=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8149,
+          "fixtureLine": 137,
+          "recordId": "Gen.14.17#11=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8150,
+          "fixtureLine": 138,
+          "recordId": "Gen.14.17#12=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8151,
+          "fixtureLine": 139,
+          "recordId": "Gen.14.17#13=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8152,
+          "fixtureLine": 140,
+          "recordId": "Gen.14.17#14=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8153,
+          "fixtureLine": 141,
+          "recordId": "Gen.14.17#15=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8154,
+          "fixtureLine": 142,
+          "recordId": "Gen.14.17#16=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8155,
+          "fixtureLine": 143,
+          "recordId": "Gen.14.17#17=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8156,
+          "fixtureLine": 144,
+          "recordId": "Gen.14.17#18=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 8157,
+          "fixtureLine": 145,
+          "recordId": "Gen.14.17#19=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 19749,
+          "fixtureLine": 146,
+          "recordId": "Gen.30.11#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 19750,
+          "fixtureLine": 147,
+          "recordId": "Gen.30.11#02=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 19751,
+          "fixtureLine": 148,
+          "recordId": "Gen.30.11#03=Q(K)"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 19752,
+          "fixtureLine": 149,
+          "recordId": "Gen.30.11#04=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 19753,
+          "fixtureLine": 150,
+          "recordId": "Gen.30.11#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 19754,
+          "fixtureLine": 151,
+          "recordId": "Gen.30.11#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 19755,
+          "fixtureLine": 152,
+          "recordId": "Gen.30.11#07=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 37993,
+          "fixtureLine": 153,
+          "recordId": "Exo.4.2#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 37994,
+          "fixtureLine": 154,
+          "recordId": "Exo.4.2#02=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 37995,
+          "fixtureLine": 155,
+          "recordId": "Exo.4.2#03=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 37996,
+          "fixtureLine": 156,
+          "recordId": "Exo.4.2#04=Q(K)"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 37997,
+          "fixtureLine": 157,
+          "recordId": "Exo.4.2#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 37998,
+          "fixtureLine": 158,
+          "recordId": "Exo.4.2#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 37999,
+          "fixtureLine": 159,
+          "recordId": "Exo.4.2#07=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102944,
+          "fixtureLine": 160,
+          "recordId": "Dan.2.4#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102945,
+          "fixtureLine": 161,
+          "recordId": "Dan.2.4#02=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102946,
+          "fixtureLine": 162,
+          "recordId": "Dan.2.4#03=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102947,
+          "fixtureLine": 163,
+          "recordId": "Dan.2.4#04=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102948,
+          "fixtureLine": 164,
+          "recordId": "Dan.2.4#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102949,
+          "fixtureLine": 165,
+          "recordId": "Dan.2.4#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102950,
+          "fixtureLine": 166,
+          "recordId": "Dan.2.4#07=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102951,
+          "fixtureLine": 167,
+          "recordId": "Dan.2.4#08=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102952,
+          "fixtureLine": 168,
+          "recordId": "Dan.2.4#09=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102953,
+          "fixtureLine": 169,
+          "recordId": "Dan.2.4#10=Q(K)"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102954,
+          "fixtureLine": 170,
+          "recordId": "Dan.2.4#11=L"
+        },
+        {
+          "sourcePath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 102955,
+          "fixtureLine": 171,
+          "recordId": "Dan.2.4#12=L"
+        },
+        {
+          "sourcePath": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 16602,
+          "fixtureLine": 172,
+          "recordId": "Psa.3.0(3.1)#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 16603,
+          "fixtureLine": 173,
+          "recordId": "Psa.3.0(3.1)#02=L"
+        },
+        {
+          "sourcePath": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 16604,
+          "fixtureLine": 174,
+          "recordId": "Psa.3.0(3.1)#03=L"
+        },
+        {
+          "sourcePath": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 16605,
+          "fixtureLine": 175,
+          "recordId": "Psa.3.0(3.1)#04=L"
+        },
+        {
+          "sourcePath": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 16606,
+          "fixtureLine": 176,
+          "recordId": "Psa.3.0(3.1)#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 16607,
+          "fixtureLine": 177,
+          "recordId": "Psa.3.0(3.1)#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14529,
+          "fixtureLine": 178,
+          "recordId": "Jos.21.36#01=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14530,
+          "fixtureLine": 179,
+          "recordId": "Jos.21.36#02=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14531,
+          "fixtureLine": 180,
+          "recordId": "Jos.21.36#03=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14532,
+          "fixtureLine": 181,
+          "recordId": "Jos.21.36#04=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14533,
+          "fixtureLine": 182,
+          "recordId": "Jos.21.36#05=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14534,
+          "fixtureLine": 183,
+          "recordId": "Jos.21.36#06=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14535,
+          "fixtureLine": 184,
+          "recordId": "Jos.21.36#07=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14536,
+          "fixtureLine": 185,
+          "recordId": "Jos.21.36#08=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14537,
+          "fixtureLine": 186,
+          "recordId": "Jos.21.36#09=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 14538,
+          "fixtureLine": 187,
+          "recordId": "Jos.21.36#10=R"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29877,
+          "fixtureLine": 188,
+          "recordId": "Jdg.16.25#01=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29878,
+          "fixtureLine": 189,
+          "recordId": "Jdg.16.25#02=Q(K)"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29879,
+          "fixtureLine": 190,
+          "recordId": "Jdg.16.25#03=Q(K)"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29880,
+          "fixtureLine": 191,
+          "recordId": "Jdg.16.25#04=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29881,
+          "fixtureLine": 192,
+          "recordId": "Jdg.16.25#05=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29882,
+          "fixtureLine": 193,
+          "recordId": "Jdg.16.25#06=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29883,
+          "fixtureLine": 194,
+          "recordId": "Jdg.16.25#07=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29884,
+          "fixtureLine": 195,
+          "recordId": "Jdg.16.25#08=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29885,
+          "fixtureLine": 196,
+          "recordId": "Jdg.16.25#09=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29886,
+          "fixtureLine": 197,
+          "recordId": "Jdg.16.25#10=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29887,
+          "fixtureLine": 198,
+          "recordId": "Jdg.16.25#11=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29888,
+          "fixtureLine": 199,
+          "recordId": "Jdg.16.25#12=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29889,
+          "fixtureLine": 200,
+          "recordId": "Jdg.16.25#13=Q(K)"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29890,
+          "fixtureLine": 201,
+          "recordId": "Jdg.16.25#14=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29891,
+          "fixtureLine": 202,
+          "recordId": "Jdg.16.25#15=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29892,
+          "fixtureLine": 203,
+          "recordId": "Jdg.16.25#16=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29893,
+          "fixtureLine": 204,
+          "recordId": "Jdg.16.25#17=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29894,
+          "fixtureLine": 205,
+          "recordId": "Jdg.16.25#18=L"
+        },
+        {
+          "sourcePath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "sourceLine": 29895,
+          "fixtureLine": 206,
+          "recordId": "Jdg.16.25#19=L"
+        }
+      ]
+    }
+  }
+}

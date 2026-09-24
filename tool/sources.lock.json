@@ -1,0 +1,61 @@
+{
+  "lockVersion": 1,
+  "repository": "https://github.com/STEPBible/STEPBible-Data",
+  "revision": "b99716b0cddb648ddb95cc786a197180f2f97d48",
+  "license": "CC-BY-4.0",
+  "attribution": "STEP Bible (https://www.STEPBible.org), based on work at Tyndale House Cambridge.",
+  "files": [
+    {
+      "type": "TAGNT",
+      "path": "Translators Amalgamated OT+NT/TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+      "localPath": "TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+      "bytes": 15939932,
+      "sha256": "524e32375361e6d3fa2f7ef00b87605fdc4317a762f395651a05fdc31ad031b7",
+      "gitBlobSha": "4bbea2c14681b01eb889d5a2d1dc0856858a32de"
+    },
+    {
+      "type": "TAGNT",
+      "path": "Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+      "localPath": "TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+      "bytes": 14189032,
+      "sha256": "ab8eaaeb68e17a1dcfa34e1e9350358f22f03bc2a97244d848750ad81044bc8e",
+      "gitBlobSha": "705c1bc1cf752e013efcef99b8d9a3b7853bf843"
+    },
+    {
+      "type": "TAHOT",
+      "path": "Translators Amalgamated OT+NT/TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "localPath": "TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "bytes": 18190455,
+      "sha256": "e9b8546ee48fe0bfc57c3b70f5f40e98d96580e803526d19026224e31753368b",
+      "gitBlobSha": "eb051292f8cee648c4f3eaf1b48cd0f1f30dc1d5"
+    },
+    {
+      "type": "TAHOT",
+      "path": "Translators Amalgamated OT+NT/TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "localPath": "TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "bytes": 17977518,
+      "sha256": "f3ded203d2a74d6368932c97ae550d1d0754b271af491dc0dedf36fe3ba0bcc5",
+      "gitBlobSha": "1cfe6718a1dae0d5d45a57a942d3f7f716ac6342"
+    },
+    {
+      "type": "TAHOT",
+      "path": "Translators Amalgamated OT+NT/TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "localPath": "TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "bytes": 9540133,
+      "sha256": "84e118a97e5725e3847cdfdd593873513021c790c63cc91a0d41fca2b5db2ed5",
+      "gitBlobSha": "3d7af689417b54ebc468700b2bd86a8ba5377530"
+    },
+    {
+      "type": "TAHOT",
+      "path": "Translators Amalgamated OT+NT/TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "localPath": "TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+      "bytes": 24500317,
+      "sha256": "195fee1dc3653bab33701f170734eb894ed647c10cd08cc61749375fe8b73775",
+      "gitBlobSha": "e3824344f6dea1a3f51932d1b0a53537c3c2023e"
+    }
+  ],
+  "documentation": {
+    "path": "README.md",
+    "sha256": "261d5157c0ffeadeedad3f734db945a4c3642e3e4ce5fa28002985b6c52437b1"
+  }
+}
