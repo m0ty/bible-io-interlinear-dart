@@ -1,7 +1,7 @@
 # bible_io_interlinear
 
 An optional, pure Dart companion to `bible_io` for original-language Bible
-interlinear data. Version **0.2.0** keeps each original-language dataset
+interlinear data. Version **0.3.0** keeps each original-language dataset
 separate from translations. It reuses public Bible-IO books, locations and verse
 labels without subclassing Bible/Verse or re-exporting the whole Bible-IO API.
 
@@ -33,6 +33,28 @@ explicitly marked and is not a verified reproduction of published typography.
 
 Translation language, original language, and gloss language are independent.
 For example, a Spanish translation can display Greek tokens with English glosses.
+
+## Use outside Flutter
+
+The public library has no Flutter dependency, asset paths, UI labels, network
+client, or filesystem requirement. CLI tools, servers, Dart web applications and
+other Flutter readers can supply their own resource reader, datasets, edition
+identities, correspondence tables and localized labels. Books use Bible-IO's
+public book namespace; the core is not restricted to the companion app's KJV
+corpus.
+
+Run a complete independent consumer, using synthetic Latin data and Spanish /
+French glosses in memory, without downloading a corpus:
+
+```sh
+dart run example/independent_client.dart
+```
+
+See [the framework-independent guide](doc/runtime_integration.md) for public
+mapping builders, source adapters and storage choices. Built-in raw-source
+importers and automatic word analysis still cover only the audited STEPBible
+profiles above. Other providers supply prepared models/data and, when needed,
+an `InterlinearWordAnalysisAdapter` for their own field semantics.
 
 ## Run locally
 
@@ -131,21 +153,26 @@ system. `TableVerseMapper` uses explicit `VerseMappingEntry` records whose
 results can be `matched`, `partial`, `unmapped`, or `ambiguous` and may contain
 multiple target locations. Caller-supplied evidence stays caller-supplied.
 
-For prepared edition mappings, `CorrespondenceJsonCodec` strictly validates the
-schema-1 index, including dataset release bindings and exact source selectors.
+For prepared edition mappings, `CorrespondenceJsonCodec` strictly validates
+provider-neutral schema 2 and legacy schema 1, including dataset release bindings
+and exact source selectors. Public `CorrespondenceIndex`,
+`CorrespondenceDatasetBinding` and `CorrespondenceEntry` constructors also support
+programmatic tables. Each dataset can have its own source revision and numbering
+system; no STEPBible provenance fields are required for a new table.
 Validate the loaded translation's SHA-256 with
 `CorrespondenceIndex.validateSourceEdition`, then use `CorrespondenceResolver`
 with an injected dataset opener. It verifies manifest identity and resolves
 ordered word selections, combined verses, and special entries without replacing
 the original source locations with a translation's address. See
-[the integration contract](doc/flutter_integration.md) for the API and ownership
+[the runtime integration contract](doc/runtime_integration.md) for the API and ownership
 boundaries.
 
 `InterlinearWordAnalyzer(metadata: bible.metadata).analyze(token)` provides typed
 contextual glosses, dictionary entries, grammatical functions, and source
 annotations. It interprets only the audited STEPBible source revision/profile;
 unknown providers retain their raw fields. Applications choose localized labels
-and presentation. Original token data and schema-1 chapter bytes remain intact.
+and presentation, or inject a provider-specific analysis adapter. Original token
+data and schema-1 chapter bytes remain intact.
 
 Unknown pairs remain unmapped. Identity correspondence requires an explicit
 `CompatibleReferencePair` assertion; equal verse numbers or equal system strings

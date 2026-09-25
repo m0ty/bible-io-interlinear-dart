@@ -120,6 +120,30 @@ Future<CorrespondenceDataset> _open(PreparedInterlinearDataset dataset) async =>
         manifestBytes: dataset.resources['manifest.json']!);
 
 void main() {
+  test('legacy correspondence can be re-encoded as provider-neutral schema 2',
+      () async {
+    final dataset = _dataset();
+    final legacy = _codec.decode(jsonEncode(_document(dataset)));
+    final text = _codec.encode(legacy);
+    final serialized = jsonDecode(text) as Map<String, dynamic>;
+    expect(serialized['schemaVersion'], 2);
+    expect(serialized.containsKey('sourceEditionSha256'), isFalse);
+    expect(serialized.containsKey('coverage'), isFalse);
+    expect(serialized['datasets']['test']['referenceSystem'], 'native');
+    final migrated = _codec.decode(text);
+    expect(migrated.sourceRevision, legacy.sourceRevision);
+    expect(migrated.targetReferenceSystem, legacy.targetReferenceSystem);
+    expect(migrated.provenance, legacy.provenance);
+    expect(migrated.sourceAssetSha256, legacy.sourceAssetSha256);
+    expect(migrated.coverage['verses'], legacy.coverage['verses']);
+    expect(migrated.coverage.containsKey('movedGreekTokens'), isFalse);
+    final result = await CorrespondenceResolver(
+        index: migrated,
+        openDataset: (_) => _open(dataset)).resolve(_translation);
+    expect(result.tokens.map((token) => token.occurrenceId),
+        ['title', 'second', 'first', 'third']);
+  });
+
   test('owned source rejects different chapter content with identical metadata',
       () async {
     final original = _dataset();

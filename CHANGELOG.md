@@ -1,3 +1,15 @@
+## 0.3.0
+
+- Public correspondence builders and provider-neutral schema 2 allow independent
+  editions, source providers, revisions and reference systems. Schema 1 remains
+  readable for existing integrations; chapter assets remain schema 1.
+- Custom word-analysis adapters support additional provider contracts and gloss
+  languages without changing the core package or its audited STEPBible defaults.
+- Added a standalone, in-memory Dart consumer and framework-independent guide.
+- Migration: correspondence-wide `sourceRevision` and `targetReferenceSystem`
+  are nullable common-value getters; use each dataset binding for mixed sources.
+  Exhaustive switches over `InterlinearAnalysisSource` must handle `custom`.
+
 ## 0.2.0
 
 - Typed, source-aware word analysis separates contextual glosses, dictionary

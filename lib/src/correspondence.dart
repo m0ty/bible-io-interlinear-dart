@@ -11,15 +11,28 @@ import 'models.dart';
 
 /// Exact prepared dataset release against which a correspondence was generated.
 final class CorrespondenceDatasetBinding {
-  const CorrespondenceDatasetBinding._(this.datasetId, this.datasetRevision,
-      this.sourceRevision, this.profile, this.manifestSha256);
+  /// Pins a dataset independently of its provider, reading profile or numbering.
+  CorrespondenceDatasetBinding({
+    required String datasetId,
+    required String datasetRevision,
+    required String sourceRevision,
+    required String profile,
+    required String referenceSystem,
+    required String manifestSha256,
+  })  : datasetId = _string(datasetId),
+        datasetRevision = _string(datasetRevision),
+        sourceRevision = _string(sourceRevision),
+        profile = _string(profile),
+        referenceSystem = _string(referenceSystem),
+        manifestSha256 = _hash(manifestSha256);
   final String datasetId;
   final String datasetRevision;
   final String sourceRevision;
   final String profile;
+  final String referenceSystem;
   final String manifestSha256;
 
-  void _validate(InterlinearMetadata metadata, String referenceSystem) {
+  void _validate(InterlinearMetadata metadata) {
     if (metadata.datasetId != datasetId ||
         metadata.datasetRevision != datasetRevision ||
         metadata.sourceRevision != sourceRevision ||
@@ -33,9 +46,27 @@ final class CorrespondenceDatasetBinding {
 
 /// One explicit edition entry. No identity fallback is inferred.
 final class CorrespondenceEntry {
-  CorrespondenceEntry._(this.datasetId, this.status,
-      List<InterlinearSourceSelection> sources, this.note)
-      : sources = List.unmodifiable(sources);
+  /// Sources are ordered and must all belong to [datasetId]. Unmapped entries
+  /// have no sources; matched, partial and ambiguous entries require sources.
+  CorrespondenceEntry({
+    required String datasetId,
+    required this.status,
+    List<InterlinearSourceSelection> sources = const [],
+    String? note,
+  })  : datasetId = _string(datasetId),
+        sources = List.unmodifiable(sources),
+        note = note == null ? null : _string(note) {
+    if ((status == VerseMappingStatus.unmapped) != this.sources.isEmpty) {
+      _bad(
+          'Unavailable entries require no sources; other entries require sources.');
+    }
+    if (this.sources.any((source) => source.datasetId != this.datasetId)) {
+      _bad('All selections in an entry must use its declared dataset.');
+    }
+    for (final source in this.sources) {
+      if (source.verseLabel case final label?) _string(label);
+    }
+  }
   final String datasetId;
   final VerseMappingStatus status;
   final List<InterlinearSourceSelection> sources;
@@ -47,12 +78,58 @@ final class CorrespondenceEntry {
 /// Hashes detect inconsistent releases, not untrusted publishers. Applications
 /// remain responsible for the trust and authenticity of their mapping document.
 final class CorrespondenceIndex {
+  /// Creates a provider-neutral index from explicit, canonical verse keys.
+  ///
+  /// Use [correspondenceKey] to produce keys. Dataset map keys must match each
+  /// binding's ID. Coverage is derived from entries; no source-specific audit
+  /// fields or particular provenance vocabulary are required.
+  factory CorrespondenceIndex({
+    required String sourceEdition,
+    required String sourceAssetSha256,
+    required String sourceReferenceSystem,
+    required Map<String, CorrespondenceDatasetBinding> datasets,
+    required Map<String, CorrespondenceEntry> entries,
+    Map<String, String> provenance = const {},
+  }) {
+    try {
+      _string(sourceEdition);
+      _hash(sourceAssetSha256);
+      _string(sourceReferenceSystem);
+      if (datasets.isEmpty) _bad('At least one dataset binding is required.');
+      for (final item in datasets.entries) {
+        if (item.key != item.value.datasetId) {
+          _bad('Dataset binding keys must match their dataset IDs.');
+        }
+      }
+      for (final entry in entries.values) {
+        if (!datasets.containsKey(entry.datasetId)) {
+          _bad('Entry uses an undeclared dataset.');
+        }
+      }
+      for (final item in provenance.entries) {
+        _string(item.key);
+        _string(item.value);
+      }
+      final coverage = _basicCoverage(entries);
+      return CorrespondenceIndex._(
+        sourceEdition: sourceEdition,
+        sourceAssetSha256: sourceAssetSha256,
+        sourceReferenceSystem: sourceReferenceSystem,
+        datasets: datasets,
+        entries: entries,
+        provenance: provenance,
+        coverage: coverage,
+        unavailable: _unavailable(entries),
+      );
+    } catch (error, stack) {
+      _decodeFailure(error, stack);
+    }
+  }
+
   CorrespondenceIndex._({
     required this.sourceEdition,
     required this.sourceAssetSha256,
     required this.sourceReferenceSystem,
-    required this.sourceRevision,
-    required this.targetReferenceSystem,
     required Map<String, CorrespondenceDatasetBinding> datasets,
     required Map<String, CorrespondenceEntry> entries,
     required Map<String, String> provenance,
@@ -67,8 +144,14 @@ final class CorrespondenceIndex {
   final String sourceEdition;
   final String sourceAssetSha256;
   final String sourceReferenceSystem;
-  final String sourceRevision;
-  final String targetReferenceSystem;
+
+  /// Common source revision, or null when independent datasets differ.
+  String? get sourceRevision =>
+      _commonValue(datasets.values.map((binding) => binding.sourceRevision));
+
+  /// Common native reference system, or null when datasets use different ones.
+  String? get targetReferenceSystem =>
+      _commonValue(datasets.values.map((binding) => binding.referenceSystem));
   final Map<String, CorrespondenceDatasetBinding> datasets;
   final Map<String, CorrespondenceEntry> entries;
   final Map<String, String> provenance;
@@ -105,12 +188,61 @@ String correspondenceKey(BibleLocation location) {
   return '${location.book.usfmIdentifier}.${location.chapter}.${label.displayString}';
 }
 
-/// Strict decoder for the existing prepared correspondence JSON schema 1.
+/// Strict codec for provider-neutral schema 2 and legacy prepared schema 1.
 ///
 /// Optional fields are accepted only by name. A misspelled occurrence selector
 /// is an error, never a request to substitute every word in its source entry.
 final class CorrespondenceJsonCodec {
   const CorrespondenceJsonCodec();
+
+  /// Emits deterministic schema 2. Legacy audit counters are not serialized:
+  /// basic coverage is derived from entries, and provenance remains caller data.
+  String encode(CorrespondenceIndex index) {
+    final datasetIds = index.datasets.keys.toList()..sort();
+    final entryKeys = index.entries.keys.toList()..sort();
+    final provenanceKeys = index.provenance.keys.toList()..sort();
+    return jsonEncode({
+      'schemaVersion': 2,
+      'sourceEdition': index.sourceEdition,
+      'sourceAssetSha256': index.sourceAssetSha256,
+      'sourceReferenceSystem': index.sourceReferenceSystem,
+      'datasets': {
+        for (final id in datasetIds)
+          id: {
+            'datasetRevision': index.datasets[id]!.datasetRevision,
+            'sourceRevision': index.datasets[id]!.sourceRevision,
+            'profile': index.datasets[id]!.profile,
+            'referenceSystem': index.datasets[id]!.referenceSystem,
+            'manifestSha256': index.datasets[id]!.manifestSha256,
+          },
+      },
+      'provenance': {
+        for (final key in provenanceKeys) key: index.provenance[key],
+      },
+      'entries': {
+        for (final key in entryKeys)
+          key: {
+            'datasetId': index.entries[key]!.datasetId,
+            'status': index.entries[key]!.status.name,
+            'sources': [
+              for (final source in index.entries[key]!.sources)
+                {
+                  'book': source.book.usfmIdentifier,
+                  'chapter': source.chapter,
+                  if (source.verseLabel != null)
+                    'verseLabel': source.verseLabel,
+                  if (source.specialEntryLabel != null)
+                    'specialEntryLabel': source.specialEntryLabel,
+                  if (source.occurrenceIds != null)
+                    'occurrenceIds': source.occurrenceIds,
+                },
+            ],
+            if (index.entries[key]!.note != null)
+              'note': index.entries[key]!.note,
+          },
+      },
+    });
+  }
 
   CorrespondenceIndex decode(String text) {
     try {
@@ -141,6 +273,10 @@ final class CorrespondenceJsonCodec {
 
   Iterable<CorrespondenceIndex?> _readSteps(
       Map<String, dynamic> root, int batchSize) sync* {
+    if (root['schemaVersion'] == 2 && root['schemaVersion'] is int) {
+      yield* _readGenericSteps(root, batchSize);
+      return;
+    }
     _fields(root, const {
       'schemaVersion',
       'sourceEdition',
@@ -163,6 +299,7 @@ final class CorrespondenceJsonCodec {
       _bad('Edition hash aliases disagree.');
     }
     final revision = _string(root['sourceRevision']);
+    final referenceSystem = _string(root['targetReferenceSystem']);
     final datasets = <String, CorrespondenceDatasetBinding>{};
     for (final e in _object(root['datasets'], 'datasets').entries) {
       final id = _string(e.key);
@@ -177,12 +314,13 @@ final class CorrespondenceJsonCodec {
       if (sourceRevision != revision) {
         _bad('Dataset source revisions disagree.');
       }
-      datasets[id] = CorrespondenceDatasetBinding._(
-          id,
-          _string(value['datasetRevision']),
-          sourceRevision,
-          _string(value['profile']),
-          _hash(value['manifestSha256']));
+      datasets[id] = CorrespondenceDatasetBinding(
+          datasetId: id,
+          datasetRevision: _string(value['datasetRevision']),
+          sourceRevision: sourceRevision,
+          profile: _string(value['profile']),
+          referenceSystem: referenceSystem,
+          manifestSha256: _hash(value['manifestSha256']));
     }
     if (datasets.isEmpty) _bad('At least one dataset binding is required.');
     final provenance = _object(root['provenance'], 'provenance');
@@ -208,57 +346,12 @@ final class CorrespondenceJsonCodec {
       final location = _keyLocation(e.key);
       books.add(location.$1);
       chapters.add('${location.$1.usfmIdentifier}.${location.$2}');
-      final value = _object(e.value, 'entry');
-      _fields(value, const {'datasetId', 'status', 'sources'},
-          optional: const {'note'});
-      final id = _string(value['datasetId']);
-      if (!datasets.containsKey(id)) _bad('Entry uses an undeclared dataset.');
-      final status = switch (value['status']) {
-        'matched' => VerseMappingStatus.matched,
-        'partial' => VerseMappingStatus.partial,
-        'unmapped' => VerseMappingStatus.unmapped,
-        'ambiguous' => VerseMappingStatus.ambiguous,
-        _ => _bad('Unknown correspondence status.'),
-      };
-      final sources = <InterlinearSourceSelection>[];
-      for (final raw in _list(value['sources'])) {
-        final source = _object(raw, 'source selection');
-        _fields(source, const {
-          'book',
-          'chapter'
-        }, optional: const {
-          'verseLabel',
-          'specialEntryLabel',
-          'occurrenceIds'
-        });
-        final book = _book(source['book']);
-        final chapter = _positive(source['chapter']);
-        // Presence with null is malformed, not a request for the default.
-        final verse = source.containsKey('verseLabel')
-            ? _string(source['verseLabel'])
-            : null;
-        final special = source.containsKey('specialEntryLabel')
-            ? _string(source['specialEntryLabel'])
-            : null;
-        final ids = source.containsKey('occurrenceIds')
-            ? _list(source['occurrenceIds']).map(_string).toList()
-            : null;
-        sources.add(InterlinearSourceSelection(
-            datasetId: id,
-            book: book,
-            chapter: chapter,
-            verseLabel: verse,
-            specialEntryLabel: special,
-            occurrenceIds: ids));
+      final entry = _decodeEntry(e.value, datasets);
+      if (entry.status == VerseMappingStatus.unmapped) {
+        unavailableEntries.add(e.key);
       }
-      if ((status == VerseMappingStatus.unmapped) != sources.isEmpty) {
-        _bad(
-            'Unavailable entries require no sources; other entries require sources.');
-      }
-      if (status == VerseMappingStatus.unmapped) unavailableEntries.add(e.key);
-      if (status == VerseMappingStatus.matched) matched++;
-      entries[e.key] = CorrespondenceEntry._(id, status, sources,
-          value.containsKey('note') ? _string(value['note']) : null);
+      if (entry.status == VerseMappingStatus.matched) matched++;
+      entries[e.key] = entry;
       if (++batchEntries == batchSize) {
         batchEntries = 0;
         yield null;
@@ -294,14 +387,75 @@ final class CorrespondenceJsonCodec {
         sourceEdition: edition,
         sourceAssetSha256: editionHash,
         sourceReferenceSystem: _string(root['sourceReferenceSystem']),
-        sourceRevision: revision,
-        targetReferenceSystem: _string(root['targetReferenceSystem']),
         datasets: datasets,
         entries: entries,
         provenance:
             provenance.map((key, value) => MapEntry(key, _string(value))),
         coverage: coverage,
         unavailable: unavailable);
+  }
+
+  Iterable<CorrespondenceIndex?> _readGenericSteps(
+      Map<String, dynamic> root, int batchSize) sync* {
+    _fields(root, const {
+      'schemaVersion',
+      'sourceEdition',
+      'sourceAssetSha256',
+      'sourceReferenceSystem',
+      'datasets',
+      'provenance',
+      'entries',
+    });
+    final datasets = <String, CorrespondenceDatasetBinding>{};
+    for (final item in _object(root['datasets'], 'datasets').entries) {
+      final binding = _object(item.value, 'dataset binding');
+      _fields(binding, const {
+        'datasetRevision',
+        'sourceRevision',
+        'profile',
+        'referenceSystem',
+        'manifestSha256',
+      });
+      datasets[item.key] = CorrespondenceDatasetBinding(
+        datasetId: item.key,
+        datasetRevision: _string(binding['datasetRevision']),
+        sourceRevision: _string(binding['sourceRevision']),
+        profile: _string(binding['profile']),
+        referenceSystem: _string(binding['referenceSystem']),
+        manifestSha256: _hash(binding['manifestSha256']),
+      );
+    }
+    if (datasets.isEmpty) _bad('At least one dataset binding is required.');
+    final provenance = <String, String>{};
+    for (final item in _object(root['provenance'], 'provenance').entries) {
+      provenance[_string(item.key)] = _string(item.value);
+    }
+    final entries = <String, CorrespondenceEntry>{};
+    var batchEntries = 0;
+    final coverage = _CoverageCounter();
+    final unavailable = <String>[];
+    for (final item in _object(root['entries'], 'entries').entries) {
+      final entry = _decodeEntry(item.value, datasets);
+      coverage.add(item.key, entry);
+      entries[item.key] = entry;
+      if (entry.status == VerseMappingStatus.unmapped) {
+        unavailable.add(item.key);
+      }
+      if (++batchEntries == batchSize) {
+        batchEntries = 0;
+        yield null;
+      }
+    }
+    yield CorrespondenceIndex._(
+      sourceEdition: _string(root['sourceEdition']),
+      sourceAssetSha256: _hash(root['sourceAssetSha256']),
+      sourceReferenceSystem: _string(root['sourceReferenceSystem']),
+      datasets: datasets,
+      entries: entries,
+      provenance: provenance,
+      coverage: coverage.counts,
+      unavailable: unavailable,
+    );
   }
 }
 
@@ -467,8 +621,8 @@ final class CorrespondenceResolver {
     }
     const codec = InterlinearJsonCodec();
     final manifest = codec.decodeManifest(utf8.decode(loaded.manifestBytes));
-    binding._validate(manifest.metadata, index.targetReferenceSystem);
-    binding._validate(loaded.bible.metadata, index.targetReferenceSystem);
+    binding._validate(manifest.metadata);
+    binding._validate(loaded.bible.metadata);
     // Check complete metadata, including reading policy and attribution,
     // before exposing the dataset alongside its bound manifest.
     final actual = InterlinearManifest(
@@ -556,6 +710,96 @@ final class CorrespondenceResolver {
 
 Never _bad(String message) =>
     throw InterlinearDataException('invalid_mapping', message);
+
+String? _commonValue(Iterable<String> values) {
+  final distinct = values.toSet();
+  return distinct.length == 1 ? distinct.single : null;
+}
+
+List<String> _unavailable(Map<String, CorrespondenceEntry> entries) => [
+      for (final item in entries.entries)
+        if (item.value.status == VerseMappingStatus.unmapped) item.key,
+    ];
+
+Map<String, int> _basicCoverage(Map<String, CorrespondenceEntry> entries) {
+  final counter = _CoverageCounter();
+  for (final entry in entries.entries) {
+    counter.add(entry.key, entry.value);
+  }
+  return counter.counts;
+}
+
+final class _CoverageCounter {
+  final books = <BibleBookEnum>{};
+  final chapters = <String>{};
+  final statuses = <VerseMappingStatus, int>{};
+  var verses = 0;
+
+  void add(String key, CorrespondenceEntry entry) {
+    final location = _keyLocation(key);
+    books.add(location.$1);
+    chapters.add('${location.$1.usfmIdentifier}.${location.$2}');
+    statuses.update(entry.status, (count) => count + 1, ifAbsent: () => 1);
+    verses++;
+  }
+
+  Map<String, int> get counts => {
+        'books': books.length,
+        'chapters': chapters.length,
+        'verses': verses,
+        for (final status in VerseMappingStatus.values)
+          status.name: statuses[status] ?? 0,
+      };
+}
+
+CorrespondenceEntry _decodeEntry(
+    Object? raw, Map<String, CorrespondenceDatasetBinding> datasets) {
+  final value = _object(raw, 'entry');
+  _fields(value, const {'datasetId', 'status', 'sources'},
+      optional: const {'note'});
+  final id = _string(value['datasetId']);
+  if (!datasets.containsKey(id)) _bad('Entry uses an undeclared dataset.');
+  final status = switch (value['status']) {
+    'matched' => VerseMappingStatus.matched,
+    'partial' => VerseMappingStatus.partial,
+    'unmapped' => VerseMappingStatus.unmapped,
+    'ambiguous' => VerseMappingStatus.ambiguous,
+    _ => _bad('Unknown correspondence status.'),
+  };
+  final sources = <InterlinearSourceSelection>[];
+  for (final raw in _list(value['sources'])) {
+    final source = _object(raw, 'source selection');
+    _fields(source, const {
+      'book',
+      'chapter'
+    }, optional: const {
+      'verseLabel',
+      'specialEntryLabel',
+      'occurrenceIds',
+    });
+    sources.add(InterlinearSourceSelection(
+      datasetId: id,
+      book: _book(source['book']),
+      chapter: _positive(source['chapter']),
+      verseLabel: source.containsKey('verseLabel')
+          ? _string(source['verseLabel'])
+          : null,
+      specialEntryLabel: source.containsKey('specialEntryLabel')
+          ? _string(source['specialEntryLabel'])
+          : null,
+      occurrenceIds: source.containsKey('occurrenceIds')
+          ? _list(source['occurrenceIds']).map(_string).toList()
+          : null,
+    ));
+  }
+  return CorrespondenceEntry(
+    datasetId: id,
+    status: status,
+    sources: sources,
+    note: value.containsKey('note') ? _string(value['note']) : null,
+  );
+}
+
 Map<String, dynamic> _object(Object? value, String field) =>
     value is Map<String, dynamic> ? value : _bad('$field must be an object.');
 List<dynamic> _list(Object? value) =>

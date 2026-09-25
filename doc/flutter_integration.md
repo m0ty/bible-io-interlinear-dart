@@ -1,9 +1,13 @@
 # Flutter integration contract
 
-Version 0.2.0 keeps source interpretation and correspondence in the pure Dart
+Version 0.3.0 keeps source interpretation and correspondence in the pure Dart
 package. Flutter owns asset access, gzip decompression, platform scheduling,
 localized labels, layout, focus, and animation. Existing chapter/manifest JSON
 remains schema 1; importing the package never loads the full corpus.
+
+This document describes the companion app's integration choices. See the
+[framework-independent guide](runtime_integration.md) for other clients,
+providers, editions, and storage backends.
 
 ## Loading a mapped passage
 

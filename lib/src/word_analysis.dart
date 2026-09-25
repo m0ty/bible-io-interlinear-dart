@@ -2,7 +2,13 @@ import 'models.dart';
 
 /// Source contracts understood by [InterlinearWordAnalyzer]. Language alone
 /// never selects a contract. Unknown sources retain their uninterpreted values.
-enum InterlinearAnalysisSource { unknown, stepBibleTagnt, stepBibleTahot }
+/// [custom] identifies analysis supplied by an application or provider adapter.
+enum InterlinearAnalysisSource {
+  unknown,
+  stepBibleTagnt,
+  stepBibleTahot,
+  custom
+}
 
 enum InterlinearGrammaticalFunction { directObjectMarker, questionMarker }
 
@@ -129,14 +135,36 @@ final class InterlinearWordAnalysis {
       List.unmodifiable(segments.where((part) => part.isWordPart));
 }
 
+/// A trusted, source-specific interpretation supplied by a dataset provider.
+///
+/// Implementations must explicitly recognize their own field contract in
+/// [supports]; language alone is not sufficient to identify source notation.
+/// An adapter may compose other adapters when an application uses several
+/// providers. Returning false leaves the built-in audited STEP interpretation
+/// and conservative raw fallback available.
+///
+/// [analyze] must retain the exact input token as [InterlinearWordAnalysis.raw].
+/// Segment analyses must refer to original members of [InterlinearToken.segments]
+/// through their raw field. The analyzer checks these identities but cannot
+/// verify the correctness of a provider's interpretation. Custom interpretations
+/// should use [InterlinearAnalysisSource.custom].
+abstract interface class InterlinearWordAnalysisAdapter {
+  bool supports(InterlinearMetadata? metadata, InterlinearToken token);
+
+  InterlinearWordAnalysis analyze(
+      InterlinearMetadata? metadata, InterlinearToken token);
+}
+
 /// Additive interpretation of schema-1 tokens; it never mutates raw data.
 ///
 /// STEP interpretation is enabled only for the audited source revision,
 /// reference system and reading profile. A new revision or another provider is
-/// intentionally uninterpreted until its field contract has been reviewed.
+/// intentionally uninterpreted until its field contract has been reviewed, or
+/// an explicitly supplied [adapter] recognizes that contract.
 final class InterlinearWordAnalyzer {
-  const InterlinearWordAnalyzer({this.metadata});
+  const InterlinearWordAnalyzer({this.metadata, this.adapter});
   final InterlinearMetadata? metadata;
+  final InterlinearWordAnalysisAdapter? adapter;
   static const stepBibleSourceRevision =
       'b99716b0cddb648ddb95cc786a197180f2f97d48';
 
@@ -163,6 +191,17 @@ final class InterlinearWordAnalyzer {
   }
 
   InterlinearWordAnalysis analyze(InterlinearToken token) {
+    final custom = adapter;
+    if (custom != null && custom.supports(metadata, token)) {
+      final result = custom.analyze(metadata, token);
+      if (!identical(result.raw, token) ||
+          result.segments.any((segment) =>
+              !token.segments.any((raw) => identical(segment.raw, raw)))) {
+        throw StateError(
+            'A word analysis adapter must preserve the original raw token and segments.');
+      }
+      return result;
+    }
     final source = _source(token);
     final segments = token.segments.map((part) {
       final visible = _isWordPart(part);
@@ -215,7 +254,8 @@ final class InterlinearWordAnalyzer {
                   InterlinearAnalysisSource.stepBibleTahot => _hebrewGloss(
                       entry.value, token,
                       question: token.segments.any(_isQuestion)),
-                  InterlinearAnalysisSource.unknown =>
+                  InterlinearAnalysisSource.unknown ||
+                  InterlinearAnalysisSource.custom =>
                     InterlinearGloss.raw(entry.value),
                 },
       },

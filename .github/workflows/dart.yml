@@ -12,4 +12,7 @@ jobs:
       - run: dart format --output=none --set-exit-if-changed .
       - run: dart analyze
       - run: dart test
+      - run: dart run example/independent_client.dart
+      - run: dart compile js -O2 -o .dart_tool/independent_client.js example/independent_client.dart
+      - run: node -e "globalThis.self = globalThis; require('./.dart_tool/independent_client.js');"
       - run: dart pub publish --dry-run
