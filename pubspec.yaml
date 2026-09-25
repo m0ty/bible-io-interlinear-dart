@@ -1,6 +1,6 @@
 name: bible_io_interlinear
 description: Optional original-language interlinear models, prepared chapter loading, explicit reference mapping, and STEPBible import for Bible-IO.
-version: 0.1.0
+version: 0.2.0
 repository: https://github.com/m0ty/bible-io-interlinear-dart
 environment:
   sdk: '>=3.4.0 <4.0.0'

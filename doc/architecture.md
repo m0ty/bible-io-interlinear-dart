@@ -71,8 +71,16 @@ resource loading and verse lookup perform those checks.
 Caller-supplied mapping assertions are not independently verified by this
 package. Universal versification conversion, a TVTMS importer, and alignment of
 arbitrary translation words to original-language tokens are outside version
-0.1.0. This boundary permits later mapping implementations without entangling
+0.2.0. This boundary permits later mapping implementations without entangling
 edition selection with resource loading.
+
+Prepared correspondence uses the strict `CorrespondenceJsonCodec` and an
+injected `CorrespondenceResolver`. Its typed selectors preserve exact verse or
+special-entry labels and ordered occurrence IDs; the translation location stays
+separate from native source identities. Dataset manifests and the translation
+asset are bound by SHA-256 and metadata. `InterlinearWordAnalyzer` provides
+source-aware typed presentation data while retaining raw values. See
+[Flutter integration](flutter_integration.md) for these additive APIs.
 
 ## Integrity and publication
 

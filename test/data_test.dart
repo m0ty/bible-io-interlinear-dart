@@ -58,6 +58,65 @@ PreparedInterlinearDataset prepared() => PreparedInterlinearDataset.build(
 
 void main() {
   const codec = InterlinearJsonCodec();
+  test('cooperative chapter decoding matches sync data and rejects late errors',
+      () async {
+    final value =
+        jsonDecode(codec.encodeChapter(chapter(1))) as Map<String, dynamic>;
+    final verse = (value['verses'] as List).single as Map<String, dynamic>;
+    final token = (verse['tokens'] as List).single as Map<String, dynamic>;
+    verse['tokens'] = [
+      for (var i = 0; i < 9; i++) {...token, 'occurrenceId': 'word:$i'}
+    ];
+    value['specialEntries'] = [
+      {
+        'sourceLabel': 'native.title',
+        'kind': 'heading',
+        'tokens': [
+          for (var i = 0; i < 2; i++) {...token, 'occurrenceId': 'title:$i'}
+        ],
+        'surfaceText': null,
+        'provenance': <String, String>{},
+      }
+    ];
+    final text = jsonEncode(value);
+    var checkpoints = 0;
+    final actual = await codec.decodeChapterAsync(text, batchSize: 2,
+        yieldControl: () async {
+      checkpoints++;
+    });
+    expect(checkpoints, 6);
+    expect(codec.encodeChapter(actual),
+        codec.encodeChapter(codec.decodeChapter(text)));
+    expect(actual.specialEntries.single.tokens.last.occurrenceId, 'title:1');
+    for (final mutate in <void Function(Map<String, dynamic>)>[
+      (last) => last['surface'] = 42,
+      (last) => last['occurrenceId'] = 'word:0',
+      (last) => last['unknown'] = true,
+    ]) {
+      final broken = jsonDecode(text) as Map<String, dynamic>;
+      mutate(broken['specialEntries'][0]['tokens'][1] as Map<String, dynamic>);
+      String? expectedCode;
+      try {
+        codec.decodeChapter(jsonEncode(broken));
+      } on InterlinearDataException catch (error) {
+        expectedCode = error.code;
+      }
+      expect(expectedCode, isNotNull);
+      checkpoints = 0;
+      await expectLater(
+          codec.decodeChapterAsync(jsonEncode(broken), batchSize: 2,
+              yieldControl: () async {
+            checkpoints++;
+          }),
+          throwsA(isA<InterlinearDataException>()
+              .having((e) => e.code, 'same code', expectedCode)));
+      expect(checkpoints, greaterThan(1));
+    }
+    await expectLater(
+        codec.decodeChapterAsync(text, batchSize: 0, yieldControl: () async {}),
+        throwsArgumentError);
+  });
+
   test('deterministic serialization, round trip, Unicode and optional nulls',
       () {
     final first = prepared();

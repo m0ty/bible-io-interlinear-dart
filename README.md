@@ -1,7 +1,7 @@
 # bible_io_interlinear
 
 An optional, pure Dart companion to `bible_io` for original-language Bible
-interlinear data. Version **0.1.0** keeps a single original-language dataset
+interlinear data. Version **0.2.0** keeps each original-language dataset
 separate from translations. It reuses public Bible-IO books, locations and verse
 labels without subclassing Bible/Verse or re-exporting the whole Bible-IO API.
 
@@ -131,6 +131,22 @@ system. `TableVerseMapper` uses explicit `VerseMappingEntry` records whose
 results can be `matched`, `partial`, `unmapped`, or `ambiguous` and may contain
 multiple target locations. Caller-supplied evidence stays caller-supplied.
 
+For prepared edition mappings, `CorrespondenceJsonCodec` strictly validates the
+schema-1 index, including dataset release bindings and exact source selectors.
+Validate the loaded translation's SHA-256 with
+`CorrespondenceIndex.validateSourceEdition`, then use `CorrespondenceResolver`
+with an injected dataset opener. It verifies manifest identity and resolves
+ordered word selections, combined verses, and special entries without replacing
+the original source locations with a translation's address. See
+[the integration contract](doc/flutter_integration.md) for the API and ownership
+boundaries.
+
+`InterlinearWordAnalyzer(metadata: bible.metadata).analyze(token)` provides typed
+contextual glosses, dictionary entries, grammatical functions, and source
+annotations. It interprets only the audited STEPBible source revision/profile;
+unknown providers retain their raw fields. Applications choose localized labels
+and presentation. Original token data and schema-1 chapter bytes remain intact.
+
 Unknown pairs remain unmapped. Identity correspondence requires an explicit
 `CompatibleReferencePair` assertion; equal verse numbers or equal system strings
 alone do not enable it. A full TVTMS importer and universal verse conversion are
@@ -156,5 +172,5 @@ dart pub publish --dry-run
 
 Unit tests run offline. See [architecture](doc/architecture.md),
 [content schema](doc/content_schema.md), and [validation results](doc/validation.md).
-The initial release does not implement lexicon services, morphology expansion,
+The package does not implement lexicon services, morphology expansion,
 corpus search, additional source importers, AI glossing, or Flutter widgets.

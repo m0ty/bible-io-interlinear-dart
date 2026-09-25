@@ -30,12 +30,62 @@ final class VerseMappingRequest {
       other is VerseMappingRequest &&
       other.sourceEdition == sourceEdition &&
       other.sourceReferenceSystem == sourceReferenceSystem &&
-      other.sourceLocation == sourceLocation &&
+      _locationKey(other.sourceLocation) == _locationKey(sourceLocation) &&
       other.targetDatasetId == targetDatasetId &&
       other.targetReferenceSystem == targetReferenceSystem;
   @override
   int get hashCode => Object.hash(sourceEdition, sourceReferenceSystem,
-      sourceLocation, targetDatasetId, targetReferenceSystem);
+      _locationKey(sourceLocation), targetDatasetId, targetReferenceSystem);
+}
+
+/// An ordered selection from one native source entry, not a translation verse.
+///
+/// Exactly one label is required. A null [occurrenceIds] selects the whole entry;
+/// a nonempty list selects those occurrences in the declared order.
+final class InterlinearSourceSelection {
+  InterlinearSourceSelection({
+    required String datasetId,
+    required this.book,
+    required this.chapter,
+    this.verseLabel,
+    this.specialEntryLabel,
+    List<String>? occurrenceIds,
+  })  : datasetId = _identifier(datasetId, 'datasetId'),
+        occurrenceIds =
+            occurrenceIds == null ? null : List.unmodifiable(occurrenceIds) {
+    if (chapter < 1) throw ArgumentError.value(chapter, 'chapter');
+    if ((verseLabel == null) == (specialEntryLabel == null)) {
+      throw ArgumentError('Exactly one native source label is required.');
+    }
+    if (verseLabel != null) VerseLabel.parse(verseLabel!);
+    if (specialEntryLabel != null) {
+      _identifier(specialEntryLabel!, 'specialEntryLabel');
+    }
+    if (this.occurrenceIds case final ids?) {
+      if (ids.isEmpty || ids.toSet().length != ids.length) {
+        throw ArgumentError(
+            'Occurrence selections must be nonempty and unique.');
+      }
+      for (final id in ids) {
+        _identifier(id, 'occurrenceId');
+      }
+    }
+  }
+
+  final String datasetId;
+  final BibleBookEnum book;
+  final int chapter;
+  final String? verseLabel;
+  final String? specialEntryLabel;
+  final List<String>? occurrenceIds;
+
+  BibleLocation? get verseLocation => verseLabel == null
+      ? null
+      : BibleLocation.checked(
+          book: book,
+          chapter: chapter,
+          verse: VerseLabel.parse(verseLabel!).startVerse,
+          verseLabel: verseLabel);
 }
 
 /// A correspondence may contain several targets without splitting their text.
@@ -46,24 +96,33 @@ final class VerseMappingResult {
   VerseMappingResult({
     required this.status,
     List<BibleLocation> targets = const [],
+    List<InterlinearSourceSelection> sourceSelections = const [],
     this.note,
     Map<String, String> provenance = const {},
   })  : targets = List.unmodifiable(targets.map(_verseLocation)),
+        sourceSelections = List.unmodifiable(sourceSelections),
         provenance = Map.unmodifiable(provenance) {
-    if (status == VerseMappingStatus.unmapped && this.targets.isNotEmpty) {
+    if (status == VerseMappingStatus.unmapped &&
+        (this.targets.isNotEmpty || this.sourceSelections.isNotEmpty)) {
       throw ArgumentError('Unmapped results cannot contain targets.');
     }
-    if (status != VerseMappingStatus.unmapped && this.targets.isEmpty) {
+    if (status != VerseMappingStatus.unmapped &&
+        this.targets.isEmpty &&
+        this.sourceSelections.isEmpty) {
       throw ArgumentError(
           'Mapped, partial and ambiguous results require targets.');
     }
-    if (this.targets.toSet().length != this.targets.length) {
+    if (this.targets.map(_locationKey).toSet().length != this.targets.length) {
       throw ArgumentError('Mapping targets must be unique.');
     }
   }
 
   final VerseMappingStatus status;
   final List<BibleLocation> targets;
+
+  /// Complete native selections, including headings and ordered word subsets.
+  /// Legacy callers may supply only [targets].
+  final List<InterlinearSourceSelection> sourceSelections;
   final String? note;
   final Map<String, String> provenance;
 }
@@ -178,3 +237,7 @@ BibleLocation _verseLocation(BibleLocation location) {
       verse: location.verse,
       verseLabel: location.verseLabel);
 }
+
+String _locationKey(BibleLocation location) =>
+    '${location.book.usfmIdentifier}.${location.chapter}.'
+    '${VerseLabel.parse(location.verseLabel!).displayString}';

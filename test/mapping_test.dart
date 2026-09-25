@@ -21,6 +21,33 @@ VerseMappingRequest request(
         targetReferenceSystem: 'hebrew-numbering');
 
 void main() {
+  test('table keys normalize equivalent labels while preserving raw spelling',
+      () {
+    final original = request(label: '1A–2b');
+    final canonical = request(label: '1a-2b');
+    final result = VerseMappingResult(
+        status: VerseMappingStatus.matched, targets: [location(2)]);
+    final mapper = TableVerseMapper(entries: [
+      VerseMappingEntry(request: original, result: result),
+    ]);
+    expect(original, canonical);
+    expect(original.hashCode, canonical.hashCode);
+    expect(mapper.map(canonical), same(result));
+    expect(original.sourceLocation.verseLabel, '1A–2b');
+    expect(
+        () => TableVerseMapper(entries: [
+              VerseMappingEntry(request: original, result: result),
+              VerseMappingEntry(request: canonical, result: result),
+            ]),
+        throwsArgumentError);
+    expect(
+        () => VerseMappingResult(status: VerseMappingStatus.matched, targets: [
+              location(1, label: '1A–2b'),
+              location(1, label: '1a-2b')
+            ]),
+        throwsArgumentError);
+  });
+
   test('explicit table preserves one-to-many and caller provenance', () {
     final targets = [location(2), location(3)];
     final provenance = {'authority': 'caller-supplied', 'table': 'local-v1'};

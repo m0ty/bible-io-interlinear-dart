@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:bible_io/bible_io.dart';
 import 'package:crypto/crypto.dart';
@@ -24,6 +25,33 @@ void validateResourcePath(String path) {
 }
 
 String resourceSha256(List<int> bytes) => sha256.convert(bytes).toString();
+
+/// Hashes exact resource bytes with caller-controlled scheduling checkpoints.
+Future<String> resourceSha256Async(List<int> bytes,
+    {required Future<void> Function() yieldControl,
+    int chunkSize = 65536}) async {
+  if (chunkSize < 1) throw ArgumentError.value(chunkSize, 'chunkSize');
+  final result = _DigestResult();
+  final input = sha256.startChunkedConversion(result);
+  for (var start = 0; start < bytes.length; start += chunkSize) {
+    final end =
+        (start + chunkSize < bytes.length) ? start + chunkSize : bytes.length;
+    input.add(bytes is Uint8List
+        ? Uint8List.sublistView(bytes, start, end)
+        : bytes.sublist(start, end));
+    await yieldControl();
+  }
+  input.close();
+  return result.value!.toString();
+}
+
+class _DigestResult implements Sink<Digest> {
+  Digest? value;
+  @override
+  void add(Digest data) => value = data;
+  @override
+  void close() {}
+}
 
 class InterlinearResource {
   final String path;
@@ -156,55 +184,94 @@ class InterlinearJsonCodec {
             .toList(),
       });
 
-  InterlinearChapter decodeChapter(String text) => _decode(() {
-        final root = _object(jsonDecode(text), 'chapter');
-        _fields(root,
-            {'schemaVersion', 'book', 'chapter', 'verses', 'specialEntries'});
-        _version(root);
-        final book = _book(_string(root, 'book'));
-        final chapter = _integer(root, 'chapter');
-        return InterlinearChapter(
-            book: book,
-            chapter: chapter,
-            verses: _list(root, 'verses').map((value) {
-              final item = _object(value, 'verse');
-              _fields(item, {
-                'label',
-                'tokens',
-                'surfaceText',
-                'textIsReconstructed',
-                'provenance'
-              });
-              final label = _string(item, 'label');
-              final parsed = VerseLabel.parse(label);
-              return InterlinearVerse(
-                  location: BibleLocation.checked(
-                      book: book,
-                      chapter: chapter,
-                      verse: parsed.startVerse,
-                      verseLabel: label),
-                  tokens: _tokens(item),
-                  surfaceText: _optionalString(item, 'surfaceText'),
-                  textIsReconstructed: _boolean(item, 'textIsReconstructed'),
-                  provenance: _strings(item, 'provenance'));
-            }).toList(),
-            specialEntries: _list(root, 'specialEntries').map((value) {
-              final item = _object(value, 'special entry');
-              _fields(item, {
-                'sourceLabel',
-                'kind',
-                'tokens',
-                'surfaceText',
-                'provenance'
-              });
-              return InterlinearSpecialEntry(
-                  sourceLabel: _string(item, 'sourceLabel'),
-                  kind: _string(item, 'kind'),
-                  tokens: _tokens(item),
-                  surfaceText: _optionalString(item, 'surfaceText'),
-                  provenance: _strings(item, 'provenance'));
-            }).toList());
+  InterlinearChapter decodeChapter(String text) => _decode(
+      () => _chapterSteps(_object(jsonDecode(text), 'chapter'), 64).last!);
+
+  /// Constructs and validates tokens in bounded batches using the same decoder
+  /// as [decodeChapter]. Callers supply scheduling; JSON parsing itself remains
+  /// synchronous. A complete valid chapter is returned, never a partial result.
+  Future<InterlinearChapter> decodeChapterAsync(String text,
+      {required Future<void> Function() yieldControl,
+      int batchSize = 64}) async {
+    if (batchSize < 1) throw ArgumentError.value(batchSize, 'batchSize');
+    try {
+      final root = _object(jsonDecode(text), 'chapter');
+      await yieldControl();
+      for (final result in _chapterSteps(root, batchSize)) {
+        if (result != null) return result;
+        await yieldControl();
+      }
+      throw StateError('The chapter decoder produced no result.');
+    } catch (error, stack) {
+      _decodeFailure(error, stack);
+    }
+  }
+
+  Iterable<InterlinearChapter?> _chapterSteps(
+      Map<String, Object?> root, int batchSize) sync* {
+    _fields(root,
+        const {'schemaVersion', 'book', 'chapter', 'verses', 'specialEntries'});
+    _version(root);
+    final book = _book(_string(root, 'book'));
+    final chapter = _integer(root, 'chapter');
+    final verses = <InterlinearVerse>[];
+    final specialEntries = <InterlinearSpecialEntry>[];
+    var batchTokens = 0;
+    for (final value in _list(root, 'verses')) {
+      final item = _object(value, 'verse');
+      _fields(item, const {
+        'label',
+        'tokens',
+        'surfaceText',
+        'textIsReconstructed',
+        'provenance'
       });
+      final label = _string(item, 'label');
+      final parsed = VerseLabel.parse(label);
+      final tokens = <InterlinearToken>[];
+      for (final raw in _list(item, 'tokens')) {
+        tokens.add(_token(raw));
+        if (++batchTokens == batchSize) {
+          batchTokens = 0;
+          yield null;
+        }
+      }
+      verses.add(InterlinearVerse(
+          location: BibleLocation.checked(
+              book: book,
+              chapter: chapter,
+              verse: parsed.startVerse,
+              verseLabel: label),
+          tokens: tokens,
+          surfaceText: _optionalString(item, 'surfaceText'),
+          textIsReconstructed: _boolean(item, 'textIsReconstructed'),
+          provenance: _strings(item, 'provenance')));
+    }
+    for (final value in _list(root, 'specialEntries')) {
+      final item = _object(value, 'special entry');
+      _fields(item,
+          const {'sourceLabel', 'kind', 'tokens', 'surfaceText', 'provenance'});
+      final tokens = <InterlinearToken>[];
+      for (final raw in _list(item, 'tokens')) {
+        tokens.add(_token(raw));
+        if (++batchTokens == batchSize) {
+          batchTokens = 0;
+          yield null;
+        }
+      }
+      specialEntries.add(InterlinearSpecialEntry(
+          sourceLabel: _string(item, 'sourceLabel'),
+          kind: _string(item, 'kind'),
+          tokens: tokens,
+          surfaceText: _optionalString(item, 'surfaceText'),
+          provenance: _strings(item, 'provenance')));
+    }
+    yield InterlinearChapter(
+        book: book,
+        chapter: chapter,
+        verses: verses,
+        specialEntries: specialEntries);
+  }
 
   String encodeJson(Object? value, {bool convertResources = false}) {
     Object? canonical(Object? value) {
@@ -317,75 +384,90 @@ class InterlinearJsonCodec {
                 })
             .toList(),
       };
-  List<InterlinearToken> _tokens(Map<String, Object?> container) =>
-      _list(container, 'tokens').map((value) {
-        final t = _object(value, 'token');
-        _fields(t, {
-          'occurrenceId',
-          'sourceRecordId',
-          'surface',
-          'language',
-          'transliteration',
-          'glosses',
-          'separatorAfter',
-          'sourceText',
-          'segments'
-        });
-        return InterlinearToken(
-            occurrenceId: _string(t, 'occurrenceId'),
-            sourceRecordId: _optionalString(t, 'sourceRecordId'),
-            surface: _string(t, 'surface', allowEmpty: true),
-            language: _string(t, 'language'),
-            transliteration: _optionalString(t, 'transliteration'),
-            glosses: _strings(t, 'glosses'),
-            separatorAfter: _string(t, 'separatorAfter', allowEmpty: true),
-            sourceText: _optionalString(t, 'sourceText'),
-            segments: _list(t, 'segments').map((value) {
-              final s = _object(value, 'segment');
-              _fields(s, {
-                'text',
-                'kind',
-                'lemma',
-                'glosses',
-                'lexicalReferences',
-                'morphology'
-              });
-              return InterlinearSegment(
-                  text: _optionalString(s, 'text'),
-                  kind: _optionalString(s, 'kind'),
-                  lemma: _optionalString(s, 'lemma'),
-                  glosses: _strings(s, 'glosses'),
-                  lexicalReferences: _list(s, 'lexicalReferences').map((value) {
-                    final l = _object(value, 'lexical reference');
-                    _fields(l, {'system', 'value', 'traditionalStrongs'});
-                    return LexicalReference(
-                        system: _string(l, 'system'),
-                        value: _string(l, 'value'),
-                        traditionalStrongs:
-                            _optionalString(l, 'traditionalStrongs'));
-                  }).toList(),
-                  morphology: _list(s, 'morphology').map((value) {
-                    final m = _object(value, 'morphology');
-                    _fields(m, {'scheme', 'code'});
-                    return MorphologyTag(
-                        scheme: _string(m, 'scheme'), code: _string(m, 'code'));
-                  }).toList());
-            }).toList());
-      }).toList();
+  InterlinearToken _token(Object? value) {
+    final t = _object(value, 'token');
+    _fields(t, const {
+      'occurrenceId',
+      'sourceRecordId',
+      'surface',
+      'language',
+      'transliteration',
+      'glosses',
+      'separatorAfter',
+      'sourceText',
+      'segments'
+    });
+    return InterlinearToken(
+        occurrenceId: _string(t, 'occurrenceId'),
+        sourceRecordId: _optionalString(t, 'sourceRecordId'),
+        surface: _string(t, 'surface', allowEmpty: true),
+        language: _string(t, 'language'),
+        transliteration: _optionalString(t, 'transliteration'),
+        glosses: _strings(t, 'glosses'),
+        separatorAfter: _string(t, 'separatorAfter', allowEmpty: true),
+        sourceText: _optionalString(t, 'sourceText'),
+        segments: _list(t, 'segments').map((value) {
+          final s = _object(value, 'segment');
+          _fields(s, const {
+            'text',
+            'kind',
+            'lemma',
+            'glosses',
+            'lexicalReferences',
+            'morphology'
+          });
+          return InterlinearSegment(
+              text: _optionalString(s, 'text'),
+              kind: _optionalString(s, 'kind'),
+              lemma: _optionalString(s, 'lemma'),
+              glosses: _strings(s, 'glosses'),
+              lexicalReferences: _list(s, 'lexicalReferences').map((value) {
+                final l = _object(value, 'lexical reference');
+                _fields(l, const {'system', 'value', 'traditionalStrongs'});
+                return LexicalReference(
+                    system: _string(l, 'system'),
+                    value: _string(l, 'value'),
+                    traditionalStrongs:
+                        _optionalString(l, 'traditionalStrongs'));
+              }).toList(),
+              morphology: _list(s, 'morphology').map((value) {
+                final m = _object(value, 'morphology');
+                _fields(m, const {'scheme', 'code'});
+                return MorphologyTag(
+                    scheme: _string(m, 'scheme'), code: _string(m, 'code'));
+              }).toList());
+        }).toList());
+  }
 
   T _decode<T>(T Function() read) {
     try {
       return read();
-    } on InterlinearException {
-      rethrow;
-    } on ParseVerseRefError catch (e) {
-      throw InterlinearDataException('invalid_verse_label', e.toString(),
-          path: 'label', cause: e);
-    } on FormatException catch (e) {
-      throw InterlinearDataException('malformed_json', e.message, cause: e);
-    } on ArgumentError catch (e) {
-      throw InterlinearDataException('invalid_model', e.toString(), cause: e);
+    } catch (error, stack) {
+      _decodeFailure(error, stack);
     }
+  }
+
+  Never _decodeFailure(Object error, StackTrace stack) {
+    if (error is InterlinearException) Error.throwWithStackTrace(error, stack);
+    if (error is ParseVerseRefError) {
+      Error.throwWithStackTrace(
+          InterlinearDataException('invalid_verse_label', error.toString(),
+              path: 'label', cause: error),
+          stack);
+    }
+    if (error is FormatException) {
+      Error.throwWithStackTrace(
+          InterlinearDataException('malformed_json', error.message,
+              cause: error),
+          stack);
+    }
+    if (error is ArgumentError) {
+      Error.throwWithStackTrace(
+          InterlinearDataException('invalid_model', error.toString(),
+              cause: error),
+          stack);
+    }
+    Error.throwWithStackTrace(error, stack);
   }
 
   Never _bad(String message) =>
